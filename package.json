@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server"
+    "dev": "nodemon --exec babel-node server",
+    "migrate": "npx prisma migrate dev --preview-feature"
   },
   "repository": {
     "type": "git",
@@ -17,12 +18,14 @@
   },
   "homepage": "https://github.com/brightjy/instaclone-backend#readme",
   "dependencies": {
+    "@prisma/client": "2.30.3",
     "apollo-server": "3.3.0",
     "graphql": "15.5.2"
   },
   "devDependencies": {
     "@babel/node": "7.14.9",
     "@babel/preset-env": "7.15.0",
-    "nodemon": "2.0.12"
+    "nodemon": "2.0.12",
+    "prisma": "2.30.3"
   }
 }
