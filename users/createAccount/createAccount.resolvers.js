@@ -13,7 +13,7 @@ export default {
           where: {
             OR: [
               {
-                username,
+                userName,
               },
               {
                 email,
@@ -22,7 +22,7 @@ export default {
           },
         });
         if(existingUser) {
-          throw new Error("This username / password is already taken.");
+          throw new Error("This userName / password is already taken.");
         }
         // hash password
         const uglyPassword = await bcrypt.hash(password, 10);
