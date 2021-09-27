@@ -23,11 +23,11 @@ export default {
           error: "Incorrect password."
         }
       }     
-      // issue a token and send it to the user
-      const token = await jwt.sign({ id:user.id }, process.env.PRIVATE_KEY);
+      // issue a authorization and send it to the user
+      const authorization = await jwt.sign({ id:user.id }, process.env.PRIVATE_KEY);
       return {
         ok: true,
-        token,
+        authorization,
       };
     },
   },
