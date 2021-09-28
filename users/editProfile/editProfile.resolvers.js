@@ -4,7 +4,7 @@ import { protectResolver } from "../users.utils";
 
 const resolverFn = async (
   _, 
-  { firstName, lastName, userName, email, password: newPassword },
+  { firstName, lastName, userName, email, password: newPassword, bio },
   { loggedInUser, protectResolver }
 ) => {     
   let uglyPassword = null;
