@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import client from "../../client";
 import { protectResolver } from "../users.utils";
+import { GraphQLUpload } from "graphql-upload";
 
 const resolverFn = async (
   _, 
@@ -41,4 +42,5 @@ export default {
   Mutation: {
     editProfile: protectResolver(resolverFn),
   },
+  Upload: GraphQLUpload,
 };
