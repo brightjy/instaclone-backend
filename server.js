@@ -2,11 +2,12 @@ require('dotenv').config();
 import { ApolloServer } from "apollo-server-express";
 import { graphqlUploadExpress } from "graphql-upload";
 import express from "express";
+import logger from "morgan";
 import { typeDefs, resolvers } from "./schema";
 import { getUser, protectResolver } from "./users/users.utils";
 
 const PORT = process.env.PORT;
-const startServer = async() => {
+const apollo = async() => {
   const server = new ApolloServer({
     resolvers,
     typeDefs,
@@ -16,25 +17,17 @@ const startServer = async() => {
         protectResolver,
       };
     },
-    // context: ({ req }) => {
-    //   return {
-    //     authorization: req.headers.authorization,
-    //   };
-    // },
-    // context: {
-    //   // context 에 담은 것은 모든 resolver에서 꺼내 쓸 수 있다.
-    //   Authorization:
-    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjMyMzEzNDkxfQ.jG2z46p2FYIqIlCgiBxAqPBt3eb1wXR4qYrvtps5fyQ",
-    // }
   });
   await server.start();
   const app = express();
   app.use(graphqlUploadExpress());
+  app.use(logger("tiny"));
+  app.use("/static", express.static("uploads")); // 폴더를 웹서버에 올림
   server.applyMiddleware({ app });
   await new Promise((func) => app.listen({port:PORT}, func));
-  console.log(`🍀 Server is running on http://localhost:${PORT}${server.graphqlPath}`);
+  console.log(`🍀 Server is running on http://localhost:${PORT}`);
 }
-startServer();
+apollo();
 
 
 // server
