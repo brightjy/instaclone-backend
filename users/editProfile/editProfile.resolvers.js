@@ -5,9 +5,10 @@ import { GraphQLUpload } from "graphql-upload";
 
 const resolverFn = async (
   _, 
-  { firstName, lastName, userName, email, password: newPassword, bio },
+  { firstName, lastName, userName, email, password: newPassword, bio, avatar },
   { loggedInUser, protectResolver }
 ) => {     
+  console.log(avatar);
   let uglyPassword = null;
   if (newPassword) {
     uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -23,6 +24,7 @@ const resolverFn = async (
         userName, 
         email, 
         ...(uglyPassword && { password:uglyPassword }),
+        bio,
       },
     },
   );
