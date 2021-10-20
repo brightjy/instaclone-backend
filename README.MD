@@ -3,17 +3,17 @@
 Instaclone Backend.
 
 ## Users:
-- [v] Create Account
-- [v] See Profile
-- [v] Login
-- [v] Edit Profile
-- [v] Change Avatar (Image Upload)
-- [v] Follow User
-- [v] Unfollow User
-- [v] See Followers with pagination (offset)
-- [v] See Following with pagination (cursor-based)
-- [v] Computed Fields
-- [v] Search Users
+- [x] Create Account
+- [x] See Profile
+- [x] Login
+- [x] Edit Profile
+- [x] Change Avatar (Image Upload)
+- [x] Follow User
+- [x] Unfollow User
+- [x] See Followers with pagination (offset)
+- [x] See Following with pagination (cursor-based)
+- [x] Computed Fields
+- [x] Search Users
 
 ## Photos:
 - [ ] See Photo
