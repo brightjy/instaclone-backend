@@ -10,7 +10,8 @@ Instaclone Backend.
 - [v] Change Avatar (Image Upload)
 - [v] Follow User
 - [v] Unfollow User
-- [ ] See Followers/Following with pagination
+- [v] See Followers with pagination (offset)
+- [v] See Following with pagination (cursor-based)
 - [ ] Computed Fields
 - [ ] Search Users
 
