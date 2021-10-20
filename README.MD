@@ -13,7 +13,7 @@ Instaclone Backend.
 - [v] See Followers with pagination (offset)
 - [v] See Following with pagination (cursor-based)
 - [v] Computed Fields
-- [ ] Search Users
+- [v] Search Users
 
 ## Photos:
 - [ ] See Photo
