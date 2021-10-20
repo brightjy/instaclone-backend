@@ -12,7 +12,7 @@ Instaclone Backend.
 - [v] Unfollow User
 - [v] See Followers with pagination (offset)
 - [v] See Following with pagination (cursor-based)
-- [ ] Computed Fields
+- [v] Computed Fields
 - [ ] Search Users
 
 ## Photos:
