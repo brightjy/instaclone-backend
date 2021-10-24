@@ -16,4 +16,24 @@ export default {
       },
     }),
   },
+  Hashtag: {
+    photos: ({id}, {page}) => {
+      return client.hashtag
+      .findUnique({
+        where: {
+          id,
+      },
+    })
+    .photos()
+  },
+    totalPhotos: ({id}) => client.photo.count({
+      where: {
+        hashtags: {
+          some: {
+            id,
+          },
+        },
+      },
+    }),
+  },
 };
