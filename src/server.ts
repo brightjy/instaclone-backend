@@ -28,7 +28,8 @@ const apollo = async() => {
   app.use("/static", express.static("uploads")); // 폴더를 웹서버에 올림
   server.applyMiddleware({ app });
   //await new Promise((func) => app.listen({port:PORT}, func));
-  await new Promise(() => app.listen({port:PORT}));
+  await new Promise(() => app.listen({port:PORT})
+  );
   //console.log(`🍀 Server is running on http://localhost:${PORT}/graphql`);
 }
 apollo();
