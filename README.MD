@@ -15,6 +15,7 @@ Instaclone Backend.
 - [x] Computed Fields
 - [x] Search Users
 
+
 ## Photos:
 - [ ] See Photo
 - [ ] Upload Photo
@@ -24,6 +25,7 @@ Instaclone Backend.
 - [ ] See Feed
 - [ ] Search Photos
 - [ ] See Hashtags
+
 
 ## Comments
 - [ ] Comment on Photo
