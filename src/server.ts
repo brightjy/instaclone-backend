@@ -5,6 +5,7 @@ import express from "express";
 import logger from "morgan";
 import { typeDefs, resolvers } from "./schema";
 import { getUser, protectResolver } from "./users/users.utils";
+import client from "./client";
 
 const PORT = process.env.PORT;
 const apollo = async() => {
@@ -14,6 +15,8 @@ const apollo = async() => {
     context: async({ req }) =>{
       return {
         loggedInUser: await getUser(req.headers.authorization),
+        //client: client,
+        client,
         protectResolver,
       };
     },
@@ -24,11 +27,11 @@ const apollo = async() => {
   app.use(logger("tiny"));
   app.use("/static", express.static("uploads")); // 폴더를 웹서버에 올림
   server.applyMiddleware({ app });
-  await new Promise((func) => app.listen({port:PORT}, func));
-  console.log(`🍀 Server is running on http://localhost:${PORT}/graphql`);
+  //await new Promise((func) => app.listen({port:PORT}, func));
+  await new Promise(() => app.listen({port:PORT}));
+  //console.log(`🍀 Server is running on http://localhost:${PORT}/graphql`);
 }
 apollo();
-
 
 // server
 //   .listen(PORT)
