@@ -36,7 +36,6 @@ export default {
           }
         }
       });
-      console.log(photo);
     }),
   },
 };
