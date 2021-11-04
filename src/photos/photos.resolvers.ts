@@ -24,17 +24,23 @@ export default {
       where: {
         photoId: id,
       }
-    })
+    }),
+    isMine: ({userId}, _, {loggedInUser}) => {
+      if(!loggedInUser) {
+        return false;
+      }
+      return userId === loggedInUser.id;
+    },
   },
   Hashtag: {
-    photos: ({id}, {page}) => {
+    photos: ({id}, {page}, {loggedInUser}) => {
       return client.hashtag
       .findUnique({
         where: {
           id,
       },
     })
-    .photos()
+    .photos();
   },
     totalPhotos: ({id}) => client.photo.count({
       where: {

@@ -7,6 +7,7 @@ export default {
         where: {
           photoId: id,
         },
+        // 페이징할거면여기서
         orderBy: {
           createdAt: "asc",
         }
