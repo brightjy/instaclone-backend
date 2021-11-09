@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import client from "../../client";
 import { protectResolver } from "../users.utils";
 import { GraphQLUpload } from "graphql-upload";
+import { uploadPhoto } from "../../common/common.utils";
 
 const resolverFn = async (
   _, 
@@ -11,13 +12,15 @@ const resolverFn = async (
 ) => {     
   let avatarUrl = null;
   if (avatar) {
-    const { filename, createReadStream } = await avatar;
-    const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+    avatarUrl = await uploadPhoto(avatar, loggedInUser.id);
+    /* 아래는 파일을 서버에 저장할 때 하는 방식 */
+    // const { filename } = await avatar;
+    // const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
     // 폴더에 파일저장
-    const readStream = createReadStream();
-    const writeStream = createWriteStream(process.cwd() + "/uploads/" + newFilename);
-    readStream.pipe(writeStream);
-    avatarUrl = `http://localhost:4000/static/${newFilename}`;
+    // const readStream = createReadStream();
+    // const writeStream = createWriteStream(process.cwd() + "/uploads/" + newFilename);
+    // readStream.pipe(writeStream);
+    // avatarUrl = `http://localhost:4000/static/${newFilename}`;
   }
 
   let uglyPassword = null;
