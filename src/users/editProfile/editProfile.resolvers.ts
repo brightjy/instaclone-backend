@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import client from "../../client";
 import { protectResolver } from "../users.utils";
 import { GraphQLUpload } from "graphql-upload";
-import { uploadPhoto } from "../../common/common.utils";
+import { uploadToS3 } from "../../common/common.utils";
 
 const resolverFn = async (
   _, 
@@ -12,7 +12,7 @@ const resolverFn = async (
 ) => {     
   let avatarUrl = null;
   if (avatar) {
-    avatarUrl = await uploadPhoto(avatar, loggedInUser.id);
+    avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
     /* 아래는 파일을 서버에 저장할 때 하는 방식 */
     // const { filename } = await avatar;
     // const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
